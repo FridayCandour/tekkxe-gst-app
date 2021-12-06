@@ -1,1 +1,0 @@
-# tekkxe-gst-app
