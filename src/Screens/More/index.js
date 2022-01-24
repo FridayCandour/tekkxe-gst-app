@@ -7,7 +7,7 @@ import styled from "styled-components/native";
 import Timer from "../OtherScreens/Timer";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Ionicons from "react-native-vector-icons/Ionicons";
-
+import { Entypo } from "@expo/vector-icons";
 const Discover = ({ navigation }) => (
   <Container>
     <ScrollView contentContainerStyle={{}} style={{}}>
@@ -224,11 +224,12 @@ const Discover = ({ navigation }) => (
           justifyContent: "space-evenly",
         }}
       >
-        <CoolBtn name="cart" text="Buy Premiun e-Books" />
-        <CoolBtn name="cart" text="Request For Assistance" />
-        <CoolBtn name="facebook" text="Join Tekkxe English Group" />
-        <CoolBtn name="contact" text="See Contact Info" />
-        <CoolBtn name="invite" text="Invite friends" />
+        <CoolBtn name="book" text="Buy Premiun e-Books" />
+        <CoolBtn name="chatbubbles" text="Request For Assistance" />
+        {/* ios-phone-portrait */}
+        <CoolBtn name="logo-whatsapp" text="Join Tekkxe English Group" />
+        <CoolBtn name="call" text="See Contact Info" />
+        <CoolBtn name="share-social" text="Invite friends" />
       </View>
     </ScrollView>
   </Container>
