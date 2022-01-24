@@ -1,16 +1,14 @@
 {
   "expo": {
-    "name": "tekkxe-gst-app",
-    "slug": "tekkxe-gst-app",
+    "name": "Tekkxe-GST-app",
+    "slug": "Tekkxe-GST-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
-    "userInterfaceStyle": "automatic",
+    "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#2E2E3C"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -18,17 +16,22 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "userInterfaceStyle": "automatic",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "userInterfaceStyle": "automatic"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#2E2E3C"
+      },
+      "userInterfaceStyle": "automatic"
     },
     "web": {
-      "favicon": "./assets/images/favicon.png"
-    }
+      "favicon": "./assets/favicon.png"
+    },
+    "description": "Tekkxe-GST-app\n\n",
+    "githubUrl": "https://github.com/FridayCandour/Tekkxe-GST-app"
   }
 }
