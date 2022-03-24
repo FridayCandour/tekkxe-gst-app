@@ -8,7 +8,6 @@ import {
   More,
   Market,
   Explore,
-  Browser,
   Standings,
   ClassRoom,
   quizScreen,
@@ -73,14 +72,6 @@ export function ExploreScreenStack({ navigation }) {
       <Stack.Screen
         name="More"
         component={More}
-        options={{
-          headerShown: false,
-        }}
-      />
-
-      <Stack.Screen
-        name="Explore"
-        component={Explore}
         options={{
           headerShown: false,
         }}

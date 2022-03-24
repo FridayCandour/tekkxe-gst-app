@@ -2,87 +2,11 @@
  * Define and export the dummy data.
  */
 
-export const Teams = [
-  {
-    id: "001",
-    name: "Real Madrid",
-    logo: require("../../assets/images/Team1.png"),
-  },
-  {
-    id: "002",
-    name: "Arsenal",
-    logo: require("../../assets/images/Team2.png"),
-  },
-  {
-    id: "003",
-    name: "FC Barcelona",
-    logo: require("../../assets/images/Team3.png"),
-  },
-  {
-    id: "004",
-    name: "Juventus",
-    logo: require("../../assets/images/Team4.png"),
-  },
-  {
-    id: "005",
-    name: "Manchester United",
-    logo: require("../../assets/images/Team5.png"),
-  },
-];
-
-export const Matches = [
-  {
-    id: "001",
-    name: "Strawberry Field",
-    team1: Teams[0],
-    team2: Teams[2],
-  },
-  {
-    id: "002",
-    name: "Autumn Field",
-    team1: Teams[3],
-    team2: Teams[1],
-  },
-  {
-    id: "003",
-    name: "Spring Field",
-    team1: Teams[4],
-    team2: Teams[0],
-  },
-  {
-    id: "004",
-    name: "more 1 ...",
-    team1: Teams[1],
-    team2: Teams[2],
-  },
-  {
-    id: "005",
-    name: "more 2 ...",
-    team1: Teams[3],
-    team2: Teams[0],
-  },
-];
-
-export const Authors = [
-  {
-    id: "001",
-    name: "Brian Imanuel",
-    avatar: require("../../assets/images/Avatar1.png"),
-  },
-  {
-    id: "002",
-    name: "Daniel Feliciano",
-    avatar: require("../../assets/images/Team5.png"),
-  },
-];
-
 export const News = [
   {
     id: "001",
-    thumbnail: require("../../assets/splash.png"),
+    thumbnail: require("../../assets/images/News1.png"),
     title: `"CR7 is back!" - Delighted Manchester United fans react as Cristiano Ronaldo reclaims famous number 7`,
-    type: "LIVE Transfer Talk",
-    author: Authors[0],
     views: "125,908",
     likes: "1403",
     comments: "976",
@@ -93,10 +17,8 @@ Juventus are due to hold a news conference at 13:00 BST: today to unveil new sig
   },
   {
     id: "003",
-    thumbnail: require("../../assets/favicon.png"),
+    thumbnail: require("../../assets/images/News1.png"),
     title: `"CR7 is back!" - Delighted Manchester United fans react as Cristiano Ronaldo reclaims famous number 7`,
-    type: "",
-    author: Authors[1],
     views: "1223",
     likes: "111",
     comments: "666",
@@ -108,10 +30,8 @@ Ronaldo shocked the world by returning to Old Trafford for a second spell with t
 
   {
     id: "004",
-    thumbnail: require("../../assets/adaptive-icon.png"),
+    thumbnail: require("../../assets/images/News1.png"),
     title: `"CR7 is back!" - Delighted Manchester United fans react as Cristiano Ronaldo reclaims famous number 7`,
-    type: "",
-    author: Authors[1],
     views: "1223",
     likes: "111",
     comments: "666",
@@ -125,8 +45,6 @@ Ronaldo shocked the world by returning to Old Trafford for a second spell with t
     id: "005",
     thumbnail: require("../../assets/images/News1.png"),
     title: `"CR7 is back!" - Delighted Manchester United fans react as Cristiano Ronaldo reclaims famous number 7`,
-    type: "",
-    author: Authors[1],
     views: "1223",
     likes: "111",
     comments: "666",
@@ -138,10 +56,8 @@ Ronaldo shocked the world by returning to Old Trafford for a second spell with t
 
   {
     id: "006",
-    thumbnail: require("../../assets/images/News3.png"),
+    thumbnail: require("../../assets/images/News1.png"),
     title: `"CR7 is back!" - Delighted Manchester United fans react as Cristiano Ronaldo reclaims famous number 7`,
-    type: "",
-    author: Authors[1],
     views: "1223",
     likes: "111",
     comments: "666",
@@ -153,10 +69,8 @@ Ronaldo shocked the world by returning to Old Trafford for a second spell with t
 
   {
     id: "007",
-    thumbnail: require("../../assets/images/News3.png"),
+    thumbnail: require("../../assets/images/News1.png"),
     title: `"CR7 is back!" - Delighted Manchester United fans react as Cristiano Ronaldo reclaims famous number 7`,
-    type: "",
-    author: Authors[1],
     views: "1223",
     likes: "111",
     comments: "666",
@@ -167,6 +81,6 @@ Ronaldo shocked the world by returning to Old Trafford for a second spell with t
   },
 ];
 
-const dummyData = { Teams, Matches, News, Authors };
+const dummyData = { News };
 
 export default dummyData;

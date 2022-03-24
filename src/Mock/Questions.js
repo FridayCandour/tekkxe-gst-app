@@ -28,17 +28,19 @@ export const Questions = {
       correct: 2,
     },
     {
-      question: "we use medictions for _________",
+      question:
+        "we use medictions for the following activities except one _________",
       options: ["playing", "exercises", "treating illnesses", "cooking"],
       correct: 3,
     },
     {
-      question: "which of the following is not a good habit",
+      question:
+        "which of the following is a very dangerous practised by some habit for children",
       options: [
         "saying the truth every time",
-        "farting",
-        "playing",
-        "stealing",
+        "farting in front of their elderly ones",
+        "playing too much and not reading books",
+        "Dishonesty, stealing from their parents and friend and telling lies",
       ],
       correct: 4,
     },

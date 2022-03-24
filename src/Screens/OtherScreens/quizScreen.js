@@ -18,13 +18,13 @@ import {
   StyleSheet,
   BackHandler,
   Alert,
+  Button,
 } from "react-native";
 import { OptionsBox } from "Components";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { Fonts } from "Constants";
 import moment from "moment";
 import { Questions } from "Mock";
-
+import { McTabIcon } from "../../Components";
 const Header = ({ course }) => {
   return (
     <View style={styles.Header}>
@@ -37,7 +37,7 @@ const Header = ({ course }) => {
             margin: 10,
           }}
         >
-          Tekkxe English
+          Tekkxe English Quiz
         </Text>
       </View>
 
@@ -97,11 +97,50 @@ const quizScreen = ({ navigation, route }) => {
   const [screenIndex, setScreenIndex] = useState(1);
   const [showScore, setShowScore] = useState("0%");
   const [question, setQuestion] = useState(0);
-  const [index, setIndex] = useState("");
+  const [index, setIndex] = useState(0);
   const [hideEndBtn, setHideEndBtn] = useState("none");
   const [hideN, setHideN] = useState("flex");
   const [hideP, setHideP] = useState("none");
+  const [End, setEndTime] = useState(false);
 
+  const initialTimerState = {
+    quizTime: moment.duration().add({ hours: 1, minutes: 0, seconds: 0 }),
+    hours: 1,
+    mins: 0,
+    secs: 0,
+  };
+  const [time, setTime] = useState(initialTimerState);
+  const updateTimer = () => {
+    let { quizTime } = time;
+
+    if (quizTime <= 0) {
+      if (!End) {
+        setEndTime(true);
+      }
+      return;
+    }
+
+    const x = setInterval(() => {
+      if (End) {
+        clearInterval(x);
+        console.log(time);
+      } else {
+        quizTime = quizTime.subtract(1, "s");
+        const hours = quizTime.hours();
+        const mins = quizTime.minutes();
+        const secs = quizTime.seconds();
+        setTime({
+          hours,
+          mins,
+          secs,
+          quizTime,
+        });
+      }
+    }, 1000);
+  };
+
+  const { hours, mins, secs } = time;
+  // updateTimer();
   // the end quiz screen
   if (screenIndex === 3) {
     return (
@@ -217,7 +256,8 @@ const quizScreen = ({ navigation, route }) => {
                       margin: 6,
                     }}
                   >
-                    Time: {Questions.duration} hour
+                    Time Left: {hours} : {mins} : {secs}
+                    {/* {Questions.duration} */}
                   </Text>
                 </View>
                 {/* questions box */}
@@ -328,6 +368,45 @@ const quizScreen = ({ navigation, route }) => {
                     </Text>
                   </TouchableOpacity>
                 </View>
+                <TouchableOpacity
+                  style={{
+                    borderRadius: 10,
+                    backgroundColor: "skyblue",
+                    padding: 12,
+                    marginTop: "20%",
+                    margin: "auto",
+                    maxWidth: 200,
+                  }}
+                  onPress={() => {
+                    Alert.alert(
+                      "You have not submitted",
+                      "Are you sure you want to go back?",
+                      [
+                        {
+                          text: "Cancel",
+                          onPress: () => null,
+                          style: "cancel",
+                        },
+                        {
+                          text: "YES",
+                          onPress: () => navigation.goBack(),
+                        },
+                      ]
+                    );
+                    return false;
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: "white",
+                      fontSize: 18,
+                      fontWeight: 800,
+                    }}
+                    size={22}
+                  >
+                    Quit Quiz
+                  </Text>
+                </TouchableOpacity>
               </LinearGradient>
             </QuizWrapper>
           </ScrollView>
@@ -345,9 +424,6 @@ const quizScreen = ({ navigation, route }) => {
                 end={{ x: 1, y: 0 }}
                 style={{ flex: 1 }}
               >
-                {/* <Header course={Questions.type} /> */}
-                {/* Head of display */}
-
                 <View
                   style={{
                     height: "30%",
@@ -358,7 +434,6 @@ const quizScreen = ({ navigation, route }) => {
                     justifyContent: "center",
                   }}
                 >
-
                   <Text
                     style={{
                       color: "whitesmoke",
@@ -377,12 +452,18 @@ const quizScreen = ({ navigation, route }) => {
                   ></McImage>
                 </View>
 
-                <View style={[styles.navigation, {
-                  flexDirection: "column"
-                }]}>
+                <View
+                  style={[
+                    styles.navigation,
+                    {
+                      flexDirection: "column",
+                    },
+                  ]}
+                >
                   <TouchableOpacity
                     onPress={() => {
                       setScreenIndex(2);
+                      updateTimer();
                       // do some thing here
                     }}
                     style={styles.btn}
@@ -437,7 +518,7 @@ const quizScreen = ({ navigation, route }) => {
                           margin: "auto",
                         }}
                       >
-                    here are the anwsers to the quiz you just tooK
+                        here are the anwsers to the quiz you just tooK
                       </Text>
                     </View>
 
@@ -473,6 +554,7 @@ const QuestionSection = ({ question }) => {
           fontWeight: 500,
           fontSize: 14,
           width: "100%",
+          textWrap: "wrap",
         }}
       >
         {question}
@@ -497,7 +579,6 @@ const QuizWrapper = styled.View`
 const Text = styled.Text`
   font-size: ${({ size }) => size}px;
   color: ${(props) => props.theme.colors.text};
-  font-family: ${Fonts.type.medium};
   margin: auto 10px;
 `;
 
@@ -536,7 +617,6 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     color: "black",
     backgroundColor: "#08b9fc",
-    fontFamily: Fonts.type.bold,
     margin: 16,
     alignItems: "center",
     justifyContent: "center",

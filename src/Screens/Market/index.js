@@ -8,8 +8,7 @@ import {
   Text,
   Image,
 } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-import { Fonts, Colors, Images } from "Constants";
+import { Colors } from "Constants";
 import { McText, McImage, McTabIcon } from "Components";
 
 import styled from "styled-components/native";
@@ -61,19 +60,9 @@ const Gamification = ({ navigation, view, setView }) => (
         minHeight: 46,
         // backgroundColor: "#3490f3",
         flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "flex-start",
       }}
     >
-      <Text
-        style={{
-          color: "whitesmoke",
-          fontWeight: 700,
-          fontSize: 24,
-          margin: 10,
-        }}
-      >
-        Tekkxe Market place
-      </Text>
       <TouchableOpacity
         style={{
           width: "10%",
@@ -92,6 +81,16 @@ const Gamification = ({ navigation, view, setView }) => (
           size={24}
         />
       </TouchableOpacity>
+      <Text
+        style={{
+          color: "whitesmoke",
+          fontWeight: 700,
+          fontSize: 24,
+          margin: 10,
+        }}
+      >
+        Tekkxe Market place
+      </Text>
     </View>
 
     {/* real gami */}
@@ -227,10 +226,20 @@ const MarketContainer = ({ navigation }) => {
                 borderRadius: 6,
               }}
             />
-            <View style={{ height: "10%" }}>
+            <View
+              style={{
+                height: "12%",
+                flexDirection: "row",
+                width: "95%",
+                margin: "auto",
+                justifyContent: "space-around",
+                alignItems: "center",
+              }}
+            >
               <Texti color="black" size={12}>
-                {item.lessons}+ lessons{" "}
+                {item.lessons}+ lessons
               </Texti>
+              <Batch>{item.price}$</Batch>
             </View>
           </TouchableOpacity>
         )}
@@ -307,8 +316,7 @@ const ClassesContainer = ({ navigation }) => {
               }}
             >
               <Texti color="whitesmoke" size={14}>
-                {" "}
-                English 50% discount{" "}
+                English 50% discount
               </Texti>
             </View>
             <Image
@@ -368,7 +376,6 @@ const Batch = styled.Text`
 const Texti = styled.Text`
   color: ${({ color }) => color};
   font-size: ${({ size }) => size}px;
-  font-family: ${Fonts.type.medium};
   text-align: center;
 `;
 export default Market;

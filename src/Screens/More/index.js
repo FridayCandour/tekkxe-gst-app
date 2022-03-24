@@ -1,112 +1,25 @@
 import React from "react";
 import { StyleSheet, StatusBar, View, ScrollView, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { Colors, Fonts, Images } from "Constants";
-import { McText } from "Components";
+import { Colors } from "Constants";
+import { McText, McTabIcon } from "Components";
 import styled from "styled-components/native";
 import Timer from "../OtherScreens/Timer";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import { Entypo } from "@expo/vector-icons";
+
 const Discover = ({ navigation }) => (
   <Container>
-    <ScrollView contentContainerStyle={{}} style={{}}>
-      <StatusBar hidden={true} />
-
-      {/* Header Section */}
-      <View
-        style={{
-          height: "100%",
-          width: "100%",
-          maxHeight: 200,
-        }}
-      >
-        <LinearGradient
-          colors={[Colors.blue, "aqua"]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-          style={{
-            width: "100%",
-            alignItems: "stretch",
-            justifyContent: "center",
-            flexDirection: "column",
-          }}
-        >
-          {/* dashboard section */}
-
-          <View
-            style={{
-              width: "100%",
-              height: "100%",
-              paddingHorizontal: "10%",
-              flexDirection: "column",
-              backgroundColor: "transparent",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <McImage
-              source={require("../../../assets/user.jpg")}
-              style={{
-                width: 100,
-                height: 100,
-                borderRadius: "50%",
-                marginTop: 90,
-                marginLeft: 5,
-                marginBottom: 10,
-              }}
-            />
-            <McText
-              size={16}
-              color="#181829"
-              regular
-              style={{
-                backgroundColor: Colors.white,
-                paddingVertical: 10,
-                paddingHorizontal: "30%",
-                borderRadius: 6,
-                alignItems: "center",
-                justifyContent: "center",
-                fontFamily: "Inter-SemiBold",
-              }}
-            >
-              Friday Candour
-            </McText>
-          </View>
-
-          <View
-            style={{
-              borderRadius: 8,
-              width: "90%",
-              height: "50%",
-              flexWrap: "wrap",
-              backgroundColor: Colors.white,
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "stretch",
-              margin: "auto",
-              shadowColor: "grey",
-              shadowOffset: {
-                width: 0,
-                height: 1,
-              },
-              shadowRadius: 5,
-              shadowOpacity: 0.7,
-              elevation: 5,
-            }}
-          >
-            <Bar symbol="hours" value={2} text="Best Reading Time" />
-            <Bar symbol="%" value={89} text="Quiz Score Average" />
-            <Bar symbol="mins" value={30} text="Best Quiz Time" />
-            <Bar symbol="books" value={10} text="Books Read" />
-          </View>
-        </LinearGradient>
-      </View>
+    <ScrollView>
+      <StatusBar hidden={false} />
+      {/* gamification */}
+      <Gamification navigation={navigation} />
 
       {/* scores and courses  section*/}
+
       <Header2Section>
-        <McText color="grey" h3 size={16}>
-          Courses and Quiz scores
+        <McText color="grey" size={20}>
+          Courses attention rates
         </McText>
         <Timer />
       </Header2Section>
@@ -114,13 +27,12 @@ const Discover = ({ navigation }) => (
       <View
         style={{
           width: "100%",
-          borderRadius: 12,
           flexDirection: "row",
           justifyContent: "center",
           alignItems: "flex-start",
-          marginBottom: 86,
-          marginTop: 40,
-          padding: 10,
+          marginTop: 2,
+          padding: 5,
+          marginBottom: 80,
         }}
       >
         <View
@@ -135,63 +47,18 @@ const Discover = ({ navigation }) => (
             padding: 8,
           }}
         >
-          <McText
-            size={14}
-            color="#181829"
-            align="center"
-            style={{
-              borderRadius: 6,
-              fontFamily: "Inter-SemiBold",
-            }}
-          >
-            Phylosophy & logic:
-          </McText>
-
-          <McText
-            size={14}
-            color="#181829"
-            align="center"
-            style={{
-              borderRadius: 6,
-              fontFamily: "Inter-SemiBold",
-            }}
-          >
-            English:
-          </McText>
-
-          <McText
-            size={14}
-            color="#181829"
-            align="center"
-            style={{
-              marginRight: "5%",
-              borderRadius: 6,
-              fontFamily: "Inter-SemiBold",
-            }}
-          >
-            GST:
-          </McText>
-
-          <McText
-            size={14}
-            color="#181829"
-            align="center"
-            style={{
-              marginRight: "5%",
-              borderRadius: 6,
-              fontFamily: "Inter-SemiBold",
-            }}
-          >
-            Dictionary:
-          </McText>
+          <Text style={styles.text}>Phylosophy & logic:</Text>
+          <Text style={styles.text}>English:</Text>
+          <Text style={styles.text}>GST:</Text>
+          <Text style={styles.text}>Dictionary:</Text>
         </View>
 
         {/* scores for each courses */}
         <View
           style={{
             width: "60%",
-            height: "200%",
-            maxHeight: 160,
+            height: "180%",
+            minHeight: 70,
             alignItems: "flex-start",
             justifyContent: "space-evenly",
             flexDirection: "column",
@@ -200,22 +67,69 @@ const Discover = ({ navigation }) => (
           }}
         >
           <ScoreRange score={45}>
-            <Text style={{ marginRight: 20 }}>45%</Text>
+            <Text
+              style={{
+                marginRight: 20,
+                color: "whitesmoke",
+                fontWeight: 900,
+                padding: 2,
+              }}
+            >
+              45%
+            </Text>
           </ScoreRange>
           <ScoreRange score={65}>
-            <Text style={{ marginRight: 20 }}>65%</Text>
+            <Text
+              style={{
+                marginRight: 20,
+                color: "whitesmoke",
+                fontWeight: 900,
+                padding: 2,
+              }}
+            >
+              65%
+            </Text>
           </ScoreRange>
           <ScoreRange score={90}>
-            <Text style={{ marginRight: 20 }}>90%</Text>
+            <Text
+              style={{
+                marginRight: 20,
+                color: "whitesmoke",
+                fontWeight: 900,
+                padding: 2,
+              }}
+            >
+              90%
+            </Text>
           </ScoreRange>
           <ScoreRange score={78}>
-            <Text style={{ marginRight: 20 }}>78%</Text>
+            <Text
+              style={{
+                marginRight: 20,
+                color: "whitesmoke",
+                fontWeight: 900,
+                padding: 2,
+              }}
+            >
+              78%
+            </Text>
           </ScoreRange>
         </View>
       </View>
       {/* end of scores */}
 
       {/* Other button section */}
+      <Header2Section
+        style={{
+          marginTop: -8,
+          marginBottom: 8,
+        }}
+      >
+        <McText color="grey" size={20}>
+          Find out more
+        </McText>
+        <Timer />
+      </Header2Section>
       <View
         style={{
           width: "100%",
@@ -226,7 +140,6 @@ const Discover = ({ navigation }) => (
       >
         <CoolBtn name="book" text="Buy Premiun e-Books" />
         <CoolBtn name="chatbubbles" text="Request For Assistance" />
-        {/* ios-phone-portrait */}
         <CoolBtn name="logo-whatsapp" text="Join Tekkxe English Group" />
         <CoolBtn name="call" text="See Contact Info" />
         <CoolBtn name="share-social" text="Invite friends" />
@@ -235,50 +148,164 @@ const Discover = ({ navigation }) => (
   </Container>
 );
 
+const Gamification = ({ navigation }) => (
+  <View
+    style={{
+      width: "100%",
+      height: "30%",
+      maxHeight: 320,
+      minHeight: 300,
+      backgroundColor: "blue",
+      flexDirection: "column",
+      alignItems: "baseline",
+      justifyContent: "space-around",
+      borderBottomEndRadius: 16,
+      borderBottomStartRadius: 16,
+      paddingBottom: 12,
+    }}
+  >
+    <View
+      style={{
+        width: "100%",
+        height: "8%",
+        maxHeight: 56,
+        minHeight: 46,
+        // backgroundColor: "#3490f3",
+        flexDirection: "row",
+        justifyContent: "flex-start",
+      }}
+    >
+      <TouchableOpacity
+        style={{
+          width: "10%",
+          color: "whitesmoke",
+          fontWeight: 700,
+          fontSize: 24,
+          margin: 10,
+        }}
+        onPress={() => {
+          navigation.toggleDrawer();
+        }}
+      >
+        <McTabIcon
+          icon={require("../../../assets/menu1.svg")}
+          color="white"
+          size={24}
+        />
+      </TouchableOpacity>
+      <Text
+        style={{
+          color: "whitesmoke",
+          fontWeight: 700,
+          fontSize: 24,
+          margin: 10,
+        }}
+      >
+        Tekkxe English
+      </Text>
+    </View>
 
-const Bar = ({ text, value, symbol }) => {
+    {/* real gami */}
+    <View
+      style={{
+        width: "100%",
+        height: "20%",
+        flexDirection: "row",
+        justifyContent: "space-around",
+        marginTop: 30,
+        // marginBottom: -100,
+      }}
+    >
+      <Gam score={20}>
+        <Text
+          style={{
+            color: "whitesmoke",
+            fontWeight: 800,
+            fontSize: 18,
+            margin: 3,
+          }}
+        >
+          friday candour
+        </Text>
+        <Batch>highest quiz score 89%</Batch>
+      </Gam>
+    </View>
+
+    <View
+      style={{
+        borderRadius: 8,
+        height: "100%",
+        maxHeight: 200,
+        minHeight: 180,
+        width: "90%",
+        margin: "auto",
+        marginBottom: -80,
+        flexWrap: "wrap",
+        backgroundColor: Colors.white,
+        flexDirection: "row",
+        justifyContent: "space-evenly",
+        alignItems: "center",
+        shadowColor: "grey",
+        shadowOffset: {
+          width: 0,
+          height: 1,
+        },
+        shadowRadius: 5,
+        shadowOpacity: 0.7,
+        elevation: 5,
+      }}
+    >
+      <Bar name="des.svg" symbol="hours" value={2} text="Best Reading Time" />
+      <Bar name="check.svg" symbol="%" value={89} text="Quiz Score Average" />
+      <Bar name="shoot.svg" symbol="mins" value={30} text="Best Quiz Time" />
+      <Bar name="book.svg" symbol="books" value={10} text="Books Read" />
+    </View>
+  </View>
+);
+
+const Bar = ({ name, text, value, symbol }) => {
   return (
     <View
       style={{
         flexDirection: "row",
-        padding: 2,
-        maxWidth: 160,
+        minWidth: 160,
         justifyContent: "flex-start",
         alignItems: "center",
       }}
     >
       <McImage
-        source={require("../../../assets/user.jpg")}
+        source={require(`../../../assets/images/${name}`)}
         style={{
           width: 50,
           height: 50,
           borderRadius: "50%",
-          margin: 5,
+          marginRight: 5,
         }}
       />
-      <View
-        style={{
-          alignItems: "center",
-          // justifyContent: "",
-          fontFamily: "Inter-SemiBold",
-        }}
-      >
-        <McText color="#181829" regular size={16}>
+
+      <Gam score={20}>
+        <Text
+          style={{
+            fontWeight: 800,
+            fontSize: 14,
+            color: "whitesmoke",
+          }}
+        >
           {value}
           {symbol}
-        </McText>
-        <McText color="#181829" regular size={10}>
+        </Text>
+        <McText color="whitesmoke" size={12}>
           {text}
         </McText>
-      </View>
+      </Gam>
     </View>
   );
 };
 
-const CoolBtn = ({name, icon, text }) => {
+const CoolBtn = ({ name, text }) => {
   return (
     <LinearGradient
-      colors={[Colors.blue, "aqua"]}
+      colors={[Colors.blue, "lightskyblue"]}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 0 }}
       style={{
@@ -297,15 +324,14 @@ const CoolBtn = ({name, icon, text }) => {
           width: "100%",
           height: "100%",
           justifyContent: "center",
-          alignItems: "center"
-
+          alignItems: "center",
         }}
       >
         <Ionicons
           style={{
             width: "10%",
             paddingHorizontal: "5%",
-            margin: "auto"
+            margin: "auto",
           }}
           color="whitesmoke"
           name={name}
@@ -336,29 +362,63 @@ const Container = styled.SafeAreaView`
   background: ${Colors.white};
 `;
 
+const Header2Section = styled.View`
+  height: 18px;
+  margin: 85px 0px 0px 12px;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+const Gam = styled.View`
+  background-color: #3490f3;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  width: 70%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: auto;
+  border-radius: 12px;
+  flex-direction: column;
+`;
+
+const Batch = styled.Text`
+  background-color: lightskyblue;
+  justify-content: center;
+  align-items: center;
+  margin: 4px;
+  width: 86%;
+  padding: 4px;
+  font-weight: 800;
+  color: floralwhite;
+  text-align: center;
+  border-radius: 8px;
+`;
+
+const Texti = styled.Text`
+  color: #fff;
+  font-size: ${({ size }) => size}px;
+  margin: 0px 10px;
+`;
 const ScoreRange = styled.View`
   justify-content: center;
   border-radius: 12px;
   align-items: center;
-  background-color: #4cd964;
+  background-color: skyblue;
   margin: auto 10px;
   width: ${(props) => props.score - 5}%;
 `;
-
-const Header1Section = styled.View`
-  margin: 20px 10px 0px 10px;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-`;
-const Header2Section = styled.View`
-  margin: 275px 10px 0px 10px;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-`;
 const McImage = styled.Image`
-  border: 3px papayawhip solid;
+  padding: 2px;
 `;
-
+const styles = StyleSheet.create({
+  text: {
+    textAlign: "center",
+    color: "#181829",
+    borderRadius: 6,
+    fontSize: 14,
+    fontFamily: "Inter-SemiBold",
+  },
+});
 export default Discover;

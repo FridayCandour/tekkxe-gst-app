@@ -1,23 +1,21 @@
 import React from "react";
 import {
   ImageBackground,
+  ActivityIndicator,
   StatusBar,
   View,
   FlatList,
   ScrollView,
-  ActivityIndicator,
   Text,
   StyleSheet,
   Image,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { Colors, Fonts, Images } from "Constants";
+import { Colors, Images } from "Constants";
 import { McText, McImage, McTabIcon } from "Components";
 import styled from "styled-components/native";
-import moment from "moment";
-import { Courses, Posts, dummyData } from "Mock";
+import { Courses, dummyData } from "Mock";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { NavigationContainer } from "@react-navigation/native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 const Discover = ({ navigation }) => (
@@ -94,19 +92,9 @@ const Gamification = ({ navigation }) => (
         minHeight: 46,
         // backgroundColor: "#3490f3",
         flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "flex-start",
       }}
     >
-      <Text
-        style={{
-          color: "whitesmoke",
-          fontWeight: 700,
-          fontSize: 24,
-          margin: 10,
-        }}
-      >
-        Tekkxe English
-      </Text>
       <TouchableOpacity
         style={{
           width: "10%",
@@ -122,9 +110,19 @@ const Gamification = ({ navigation }) => (
         <McTabIcon
           icon={require("../../../assets/menu1.svg")}
           color="white"
-          size={24}
+          size={22}
         />
       </TouchableOpacity>
+      <Text
+        style={{
+          color: "whitesmoke",
+          fontWeight: 700,
+          fontSize: 24,
+          margin: 10,
+        }}
+      >
+        Tekkxe English
+      </Text>
     </View>
 
     {/* real gami */}
@@ -382,7 +380,6 @@ const Batch = styled.Text`
 const Texti = styled.Text`
   color: #fff;
   font-size: ${({ size }) => size}px;
-  font-family: ${Fonts.type.medium};
   margin: 0px 10px;
 `;
 

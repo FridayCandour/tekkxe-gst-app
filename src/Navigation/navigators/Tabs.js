@@ -3,7 +3,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useTheme } from "styled-components";
 import { McTabIcon, McText } from "Components";
 import { Images, Colors } from "Constants";
-
 import { Explore, Standings, More, Market } from "Screens";
 
 const Tab = createBottomTabNavigator();
@@ -20,70 +19,14 @@ const Tabs = ({ params }) => {
         tabBarStyle: [
           {
             display: "flex",
-            borderTopEndRadius: 20,
-            borderTopStartRadius: 20,
             backgroundColor: "blue", //Colors.blue1, //"#3490f3", //"#A0A3BD",
             alignContent: "center",
             justifyContent: "center",
-            padding: 5,
           },
           null,
         ],
       }}
     >
-      <Tab.Screen
-        name="More"
-        component={More}
-        options={{
-          headerShown: false,
-          tabBarLabel: ({ focused, color }) => (
-            <McText
-              medium
-              size={10}
-              color={focused ? Colors.white : "#A0A3BD"}
-              style={{
-                display: focused ? "flex" : "none",
-              }}
-            >
-              More
-            </McText>
-          ),
-          tabBarIcon: ({ focused, color, size }) => (
-            <McTabIcon
-              icon={Images.More}
-              color={focused ? "white" : "#3490f3"} //"#A0A3BD"}
-              size={24}
-            />
-          ),
-        }}
-      />
-
-      <Tab.Screen
-        name="Market"
-        component={Market}
-        options={{
-          headerShown: false,
-          tabBarLabel: ({ focused, color }) => (
-            <McText
-              medium
-              size={10}
-              color={focused ? Colors.white : "#A0A3BD"}
-              style={{
-                display: focused ? "flex" : "none",
-              }}
-            >
-              Premiun
-            </McText>
-          ),
-          tabBarIcon: ({ focused, color, size }) => (
-            <McTabIcon
-              icon={Images.Explore}
-              color={focused ? "white" : "#3490f3"} //"#A0A3BD"}
-              size={24}
-            />
-          ),
-        }}
-      />
       <Tab.Screen
         name="Explore"
         component={Explore}
@@ -132,6 +75,59 @@ const Tabs = ({ params }) => {
           tabBarIcon: ({ focused, color, size }) => (
             <McTabIcon
               icon={Images.Standings}
+              color={focused ? "white" : "#3490f3"} //"#A0A3BD"}
+              size={24}
+            />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Market"
+        component={Market}
+        options={{
+          headerShown: false,
+          tabBarLabel: ({ focused, color }) => (
+            <McText
+              medium
+              size={10}
+              color={focused ? Colors.white : "#A0A3BD"}
+              style={{
+                display: focused ? "flex" : "none",
+              }}
+            >
+              Premiun
+            </McText>
+          ),
+          tabBarIcon: ({ focused, color, size }) => (
+            <McTabIcon
+              icon={Images.Explore}
+              color={focused ? "white" : "#3490f3"} //"#A0A3BD"}
+              size={24}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="More"
+        component={More}
+        options={{
+          headerShown: false,
+          tabBarLabel: ({ focused, color }) => (
+            <McText
+              medium
+              size={10}
+              color={focused ? Colors.white : "#A0A3BD"}
+              style={{
+                display: focused ? "flex" : "none",
+              }}
+            >
+              More
+            </McText>
+          ),
+          tabBarIcon: ({ focused, color, size }) => (
+            <McTabIcon
+              icon={Images.More}
               color={focused ? "white" : "#3490f3"} //"#A0A3BD"}
               size={24}
             />

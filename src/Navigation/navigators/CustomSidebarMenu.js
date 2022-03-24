@@ -3,7 +3,6 @@ import {
   SafeAreaView,
   View,
   StyleSheet,
-  Image,
   StatusBar,
   Text,
   Linking,
@@ -13,16 +12,17 @@ import {
 import {
   DrawerContentScrollView,
   DrawerItemList,
-  DrawerItem,
 } from "@react-navigation/drawer";
+import { McTabIcon } from "Components";
 import styled from "styled-components/native";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const CustomSidebarMenu = (props) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar hidden={false} />
-      <DrawerContentScrollView style={{ flex: 1, height: "100%" }} {...props}>
+      <DrawerContentScrollView style={{ flex: 1 }} {...props}>
         <ImageBackground
           source={require("../../../assets/images/blue.png")}
           style={styles.sideMenuBackgroundImage}
@@ -51,7 +51,7 @@ const CustomSidebarMenu = (props) => {
               fontStyle: "roboto regular",
             }}
           >
-            scored : 67% avg total in quizes
+            Average Quiz Score : 67% total
           </Text>
         </ImageBackground>
         <DrawerItemList {...props} />
@@ -77,48 +77,34 @@ const CustomSidebarMenu = (props) => {
             Rate Us
           </Text>
         </View>
-        <View
+      </DrawerContentScrollView>
+      <View
+        style={{
+          flexDirection: "column",
+          width: "100%",
+          padding: 10,
+          borderTopWidth: 2,
+          borderTopColor: "blue",
+        }}
+      >
+        <TouchableOpacity
           style={{
-            flexDirection: "column",
-            width: "100%",
-            padding: 10,
-            borderTopWidth: 2,
-            borderTopColor: "grey",
-            top: "20%",
+            flexDirection: "row",
+            alignItems: "flex-start",
+            justifyContent: "flex-start",
+            width: "40%",
           }}
         >
-          <View
-            style={{
-              flexDirection: "row",
-              width: "100%",
-              margin: "auto",
-            }}
-          >
-            <Image
-              source={require("../../../assets/icon.png")}
-              style={styles.icon}
-            />
-            <Text style={{ fontSize: 16, textAlign: "center", color: "grey" }}>
-              settings
-            </Text>
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              width: "100%",
-              margin: "auto",
-            }}
-          >
-            <Image
-              source={require("../../../assets/icon.png")}
-              style={styles.icon}
-            />
-            <Text style={{ fontSize: 16, textAlign: "center", color: "grey" }}>
-              login
-            </Text>
-          </View>
-        </View>
-      </DrawerContentScrollView>
+          <Text style={{ fontSize: 16, textAlign: "center", color: "grey" }}>
+            settings
+          </Text>
+          <McTabIcon
+            icon={require("../../../assets/images/switches.svg")}
+            color="#3490f3" //"#A0A3BD"}
+            size={22}
+          />
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };

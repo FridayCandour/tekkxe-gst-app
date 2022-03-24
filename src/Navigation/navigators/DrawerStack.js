@@ -1,14 +1,16 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { useTheme, lightTheme, darkTheme } from "Themes";
-import { Explore, Standings, More, Market } from "Screens";
+import { Standings, More, Market, quizScreen } from "Screens";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import CustomSidebarMenu from "./CustomSidebarMenu";
 import TabStacks from "./TabStacks";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+
 const Drawer = createDrawerNavigator();
 export default function DrawerStack() {
   let theme = useTheme();
+
   return (
     <NavigationContainer theme={theme.mode === "dark" ? darkTheme : lightTheme}>
       <Drawer.Navigator
@@ -32,29 +34,12 @@ export default function DrawerStack() {
           component={TabStacks}
           options={{
             headerShown: false,
-            title: "Home",
+            title: "Learn",
             headerTitleAlign: "center",
             drawerIcon: ({ focused, color, size }) => (
               <Ionicons
                 color={focused ? "blue" : "#3490f3"}
                 name="home-outline"
-                size={22}
-              />
-            ),
-          }}
-        />
-
-        <Drawer.Screen
-          name="Standings"
-          component={Standings}
-          options={{
-            headerShown: false,
-            title: "courses",
-            headerTitleAlign: "center",
-            drawerIcon: ({ focused, color, size }) => (
-              <Ionicons
-                color={focused ? "blue" : "#3490f3"}
-                name="book-outline"
                 size={22}
               />
             ),
@@ -72,23 +57,6 @@ export default function DrawerStack() {
               <Ionicons
                 color={focused ? "blue" : "#3490f3"}
                 name="cart-outline"
-                size={22}
-              />
-            ),
-          }}
-        />
-
-        <Drawer.Screen
-          name="More"
-          component={More}
-          options={{
-            headerShown: false,
-            title: "progress",
-            headerTitleAlign: "center",
-            drawerIcon: ({ focused, color, size }) => (
-              <Ionicons
-                color={focused ? "blue" : "#3490f3"}
-                name="timer-outline"
                 size={22}
               />
             ),

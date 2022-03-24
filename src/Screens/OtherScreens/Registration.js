@@ -7,7 +7,7 @@ import {
   TextInput,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { Colors, Fonts, Images } from "Constants";
+import { Colors } from "Constants";
 import styled from "styled-components/native";
 const Registration = ({ navigation }) => {
 
@@ -154,13 +154,11 @@ const Submit = styled.TouchableOpacity`
   max-height: 50px;
   border-radius: 14px;
   background-color: #dde1e7;
-  font-family: ${Fonts.type.bold};
   margin: auto;
 `;
 const Text = styled.Text`
   font-size: 22px;
   color: #dde1e7;
-  font-family: ${Fonts.type.medium};
   margin: auto;
   font-weight: 900;
   margin-bottom: 30px;

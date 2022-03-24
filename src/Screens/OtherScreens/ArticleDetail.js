@@ -12,7 +12,7 @@ import styled from "styled-components/native";
 import { LinearGradient } from "expo-linear-gradient";
 import moment from "moment";
 // import MaskedView from '@react-native-community/masked-view';
-import { Fonts, Images, Metrics, Colors } from "Constants";
+import { Images, Colors } from "Constants";
 import { McText, McImage } from "Components";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
