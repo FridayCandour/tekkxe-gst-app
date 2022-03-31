@@ -89,7 +89,11 @@ const Gamification = ({ navigation, view, setView }) => (
           margin: 10,
         }}
       >
+<<<<<<< HEAD:src/Screens/Book/index.js
         Your Books
+=======
+        Tekkxe Market place
+>>>>>>> c64853ebfd482c13fcde21c6dc2b10d99d8ffa54:src/Screens/Market/index.js
       </Text>
     </View>
 
