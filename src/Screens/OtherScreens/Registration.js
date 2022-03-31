@@ -7,16 +7,15 @@ import {
   TextInput,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { Colors, Fonts, Images } from "Constants";
+import { Colors } from "Constants";
 import styled from "styled-components/native";
 const Registration = ({ navigation }) => {
-
-	// a state object to manage the user data input
-	const [save, saver] = useState({
+  // a state object to manage the user data input
+  const [save, saver] = useState({
     name: "",
     institution: "",
     phone: "",
-  	email: ""
+    email: "",
   });
 
   const [load, setLoad] = useState(false);
@@ -58,7 +57,7 @@ const Registration = ({ navigation }) => {
               paddingTop: 140,
             }}
           >
-            <Text>Welcome to Tekkxe English</Text>
+            <Text>Welcome to Business Unihub</Text>
             <Input
               placeholder="what are your names?"
               saver={saver}
@@ -80,7 +79,6 @@ const Registration = ({ navigation }) => {
               field="phone"
             />
 
-
             <Input
               placeholder="email?"
               saver={saver}
@@ -88,12 +86,10 @@ const Registration = ({ navigation }) => {
               field="email"
             />
 
-
-
             <Submit
               style={{
                 shadowColor: "black",
-                elevation: 10
+                elevation: 10,
               }}
               onPress={() => {
                 let validated = false;
@@ -103,7 +99,7 @@ const Registration = ({ navigation }) => {
                     save[data] !== ""
                   ) {
                     validated = true;
-					  break;
+                    break;
                   } else {
                     validated = false;
                   }
@@ -154,13 +150,11 @@ const Submit = styled.TouchableOpacity`
   max-height: 50px;
   border-radius: 14px;
   background-color: #dde1e7;
-  font-family: ${Fonts.type.bold};
   margin: auto;
 `;
 const Text = styled.Text`
   font-size: 22px;
   color: #dde1e7;
-  font-family: ${Fonts.type.medium};
   margin: auto;
   font-weight: 900;
   margin-bottom: 30px;

@@ -2,7 +2,7 @@
 export const Posts = [
   {
     id: "001",
-    thumbnail: require("../../assets/images/News3.png"),
+    thumbnail: require("../../assets/images/News1.png"),
     Post: "Pure English Post",
     lessons: 12,
   },
@@ -14,19 +14,19 @@ export const Posts = [
   },
   {
     id: "003",
-    thumbnail: require("../../assets/images/News2.png"),
+    thumbnail: require("../../assets/images/News1.png"),
     Post: "Text of orals Post",
     lessons: 13,
   },
   {
     id: "004",
-    thumbnail: require("../../assets/images/News3.png"),
+    thumbnail: require("../../assets/images/News1.png"),
     Post: "phonetics and sounds Post",
     lessons: 32,
   },
   {
     id: "005",
-    thumbnail: require("../../assets/images/News2.png"),
+    thumbnail: require("../../assets/images/News1.png"),
     Post: "Drama and plays Post",
     lessons: 31,
   },
@@ -38,7 +38,7 @@ export const Posts = [
   },
   {
     id: "007",
-    thumbnail: require("../../assets/images/News2.png"),
+    thumbnail: require("../../assets/images/News1.png"),
     Post: "letter writting and creative writting",
     lessons: 16,
   },

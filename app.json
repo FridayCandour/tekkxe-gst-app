@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Tekkxe-GST-app",
-    "slug": "Tekkxe-GST-app",
+    "name": "Business Unihub",
+    "slug": "business-unihub",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -26,12 +26,14 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#2E2E3C"
       },
-      "userInterfaceStyle": "automatic"
+      "versionCode": 1,
+      "userInterfaceStyle": "automatic",
+      "package": "com.fridaycandour.businessunihub"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": "Tekkxe-GST-app\n\n",
-    "githubUrl": "https://github.com/FridayCandour/Tekkxe-GST-app"
+    "description": "Business Unihub\n\n",
+    "githubUrl": "https://github.com/FridayCandour/"
   }
 }

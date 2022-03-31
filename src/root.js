@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import * as Font from "expo-font";
 import { AppNavigator } from "Navigation";
 import ThemeManager from "Themes";
+import { ActivityIndicator, ImageBackground } from "react-native";
 import { Fonts } from "Constants";
-import { SafeAreaView, ActivityIndicator } from "react-native";
-
 const App = () => {
   const [assetsLoaded, setAssetsLoaded] = useState(false);
 
@@ -23,15 +22,14 @@ const App = () => {
       <AppNavigator />
     </ThemeManager>
   ) : (
-    <SafeAreaView
+    <ImageBackground
+      source={require("Assets/splash.png")}
       style={{
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
       }}
-    >
-      <ActivityIndicator size="small"></ActivityIndicator>
-    </SafeAreaView>
+    />
   );
 };
 

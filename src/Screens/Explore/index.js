@@ -1,422 +1,275 @@
-import React from "react";
-import {
-  ImageBackground,
-  StatusBar,
-  View,
-  FlatList,
-  ScrollView,
-  ActivityIndicator,
-  Text,
-  StyleSheet,
-  Image,
-} from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-import { Colors, Fonts, Images } from "Constants";
-import { McText, McImage, McTabIcon } from "Components";
+import React, { useState, useEffect } from "react";
+import { StatusBar, View, ScrollView, Text, StyleSheet } from "react-native";
+import { McTabIcon } from "Components";
 import styled from "styled-components/native";
-import moment from "moment";
-import { Courses, Posts, dummyData } from "Mock";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { NavigationContainer } from "@react-navigation/native";
-import Ionicons from "react-native-vector-icons/Ionicons";
+import { Home, Book, Course, Advert } from "../OtherScreens/homeStack";
 
-const Discover = ({ navigation }) => (
-  <Container>
-    <StatusBar hidden={false} />
-    <ScrollView>
-      {/* gamification */}
-      <Gamification navigation={navigation} />
+const Discover = ({ navigation }) => {
+  const [view, veiwer] = useState(3);
 
-      {/* Books Section */}
-      <Header2Section>
-        <Ionicons
-          style={{
-            marginRight: 5,
-          }}
-          color="#A0A3BD"
-          name="timer-outline"
-          size={24}
-        />
-        <McText color="#A0A3BD" semi size={18}>
-          Learn all at one place
-        </McText>
-      </Header2Section>
+  if (view === 0) {
+    return (
+      <Container>
+        <StatusBar hidden={false} />
+        <ScrollView>
+          <Gamification veiwer={veiwer} navigation={navigation} />
+          <Home navigation={navigation} />
+        </ScrollView>
+      </Container>
+    );
+  }
 
-      {/* courses */}
-      <CoursesContainer courses={Courses} navigation={navigation} />
+  if (view === 1) {
+    return (
+      <Container>
+        <StatusBar hidden={false} />
+        <ScrollView>
+          <Gamification veiwer={veiwer} navigation={navigation} />
+          <Book navigation={navigation} />
+        </ScrollView>
+      </Container>
+    );
+  }
 
-      {/* premiun ads banner */}
-      <Barner />
-      <Header2Section>
-        <Ionicons
-          style={{
-            marginRight: 5,
-          }}
-          color="#A0A3BD"
-          name="cart-outline"
-          size={24}
-        />
-        <McText color="#A0A3BD" semi size={18}>
-          Enjoy Premiun materials
-        </McText>
-      </Header2Section>
-      {/* market place */}
-      <MarketContainer
-        navigation={navigation}
-        item={[dummyData.News[0], dummyData.News[1], dummyData.News[2]]}
-      />
-    </ScrollView>
-  </Container>
-);
+  if (view === 2) {
+    return (
+      <Container>
+        <StatusBar hidden={false} />
+        <ScrollView>
+          <Gamification veiwer={veiwer} navigation={navigation} />
+          <Course navigation={navigation} />
+        </ScrollView>
+      </Container>
+    );
+  }
 
-// backgroundColor: "#3490f3",
-const Gamification = ({ navigation }) => (
-  <View
-    style={{
-      width: "100%",
-      height: "30%",
-      maxHeight: 140,
-      minHeight: 130,
-      backgroundColor: "blue",
-      flexDirection: "column",
-      alignItems: "baseline",
-      justifyContent: "space-around",
-      borderBottomEndRadius: 16,
-      borderBottomStartRadius: 16,
-      paddingBottom: 12,
-    }}
-  >
-    <View
-      style={{
-        width: "100%",
-        height: "8%",
-        maxHeight: 56,
-        minHeight: 46,
-        // backgroundColor: "#3490f3",
-        flexDirection: "row",
-        justifyContent: "space-between",
-      }}
-    >
-      <Text
-        style={{
-          color: "whitesmoke",
-          fontWeight: 700,
-          fontSize: 24,
-          margin: 10,
-        }}
-      >
-        Tekkxe English
-      </Text>
-      <TouchableOpacity
-        style={{
-          width: "10%",
-          color: "whitesmoke",
-          fontWeight: 700,
-          fontSize: 24,
-          margin: 10,
-        }}
-        onPress={() => {
-          navigation.toggleDrawer();
-        }}
-      >
-        <McTabIcon
-          icon={require("../../../assets/menu1.svg")}
-          color="white"
-          size={24}
-        />
-      </TouchableOpacity>
-    </View>
+  if (view === 3) {
+    return (
+      <Container>
+        <StatusBar hidden={false} />
+        <ScrollView>
+          <Gamification veiwer={veiwer} navigation={navigation} />
+          <Advert navigation={navigation} />
+        </ScrollView>
+      </Container>
+    );
+  }
+};
 
-    {/* real gami */}
-    <View
-      style={{
-        width: "100%",
-        height: "50%",
-        flexDirection: "row",
-      }}
-    >
-      <Gam score={20}>
-        <Text
-          style={{
-            color: "whitesmoke",
-            fontWeight: 800,
-            fontSize: 13,
-            margin: 6,
-          }}
-        >
-          HQS
-        </Text>
-        <Batch>300</Batch>
-      </Gam>
-      <Gam score={20}>
-        <Text
-          style={{
-            color: "whitesmoke",
-            fontWeight: 800,
-            fontSize: 13,
-            margin: 6,
-          }}
-        >
-          English
-        </Text>
-        <Batch>780</Batch>
-      </Gam>
-      <Gam score={20}>
-        <Text
-          style={{
-            color: "whitesmoke",
-            fontWeight: 800,
-            fontSize: 13,
-            margin: 6,
-          }}
-        >
-          classes
-        </Text>
-        <Batch>100</Batch>
-      </Gam>
-    </View>
-  </View>
-);
+const Gamification = ({ navigation, veiwer }) => {
+  const [bord, border] = useState({
+    over: true,
+    book: false,
+    course: false,
+    advert: false,
+  });
 
-const Barner = ({}) => (
-  <BannerSection>
-    <LinearGradient
-      colors={[Colors.blue1, "aqua"]}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 0 }}
-      style={{
-        borderRadius: 12,
-        justifyContent: "space-between",
-        flexDirection: "row",
-      }}
-    >
+  return (
+    <View style={{ width: "100%" }}>
       <View
         style={{
-          width: "70%",
-          margin: 20,
-          justifyContent: "space-between",
+          width: "100%",
+          height: "12%",
+          backgroundColor: "#3490f3",
+          maxHeight: 80,
+          minHeight: 60,
+          margin: 0,
+          flexDirection: "row",
+          justifyContent: "flex-start",
+          shadowColor: "black",
+          // alignItems: "center",
+          shadowOffset: {
+            width: 0,
+            height: 3,
+          },
+          shadowRadius: 6,
+          shadowOpacity: 0.5,
+          elevation: 6,
         }}
       >
-        <McText
-          size={18}
+        <TouchableOpacity
           style={{
-            fontFamily: "Inter-SemiBold",
+            width: "10%",
+            margin: 12,
+          }}
+          onPress={() => {
+            navigation.toggleDrawer();
           }}
         >
-          Get Tekkxe English premium
-        </McText>
+          <McTabIcon
+            icon={require("../../../assets/menu1.svg")}
+            color="white"
+            size={22}
+          />
+        </TouchableOpacity>
+        <Text
+          style={{
+            color: "whitesmoke",
+            fontWeight: 700,
+            fontSize: 24,
+            margin: 12,
+          }}
+        >
+          Business Unihub
+        </Text>
       </View>
-      <McImage
+
+      {/* real gami */}
+      <View
         style={{
-          width: 60,
-          height: 60,
-          margin: 5,
+          width: "100%",
+          flexDirection: "row",
         }}
-        source={require("../../../assets/images/badge.svg")}
-      />
-    </LinearGradient>
-  </BannerSection>
-);
+      >
+        <Gam
+          style={{
+            borderBottomWidth: 2,
+            borderColor: bord.over ? "skyblue" : "white",
+          }}
+          onPress={() => {
+            veiwer(0);
 
-const MarketContainer = ({ navigation, item }) => {
-  return (
-    <View style={styles.posts}>
-      <FlatList
-        keyExtractor={(item) => "_news" + item.id}
-        vertical
-        showsHorizontalScrollIndicator={false}
-        data={item}
-        renderItem={({ item, index }) => (
-          <BarItem navigation={navigation} item={item} index={index} />
-        )}
-      ></FlatList>
-    </View>
-  );
-};
-
-const BarItem = ({ item, index, navigation }) => (
-  <TouchableOpacity
-    onPress={() => {
-      // navigation.navigate("ClassRoom", { selectedArticle: item });
-    }}
-    style={{
-      height: "30%",
-      width: "96%",
-      minHeight: 120,
-      backgroundColor: "white",
-      alignItems: "flex-start",
-      margin: "auto",
-      shadowColor: "black",
-      shadowOffset: {
-        width: 0,
-        height: 3,
-      },
-      shadowRadius: 8,
-      shadowOpacity: 0.7,
-      elevation: 12,
-      borderRadius: 10,
-      marginBottom: 16,
-    }}
-  >
-    <View
-      style={{
-        height: "30%",
-        backgroundColor: Colors.blue1,
-        justifyContent: "center",
-        width: "100%",
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
-      }}
-    >
-      <Texti size={12}> English 50% discount </Texti>
-    </View>
-    <Image
-      source={item.thumbnail}
-      style={{
-        width: "100%",
-        height: "70%",
-        borderBottomLeftRadius: 10,
-        borderBottomRightRadius: 10,
-      }}
-    />
-  </TouchableOpacity>
-);
-
-const CoursesContainer = ({ courses, navigation }) => {
-  return (
-    <View style={styles.course}>
-      <FlatList
-        keyExtractor={(item) => "_course" + item.id}
-        showsHorizontalScrollIndicator={false}
-        horizontal
-        contentContainerStyle={{}}
-        data={courses}
-        renderItem={({ item, index }) => (
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate("ClassRoom", { selectedArticle: item });
+            border({
+              over: true,
+              book: false,
+              course: false,
+              advert: false,
+            });
+          }}
+        >
+          <Text
+            style={{
+              color: "#013246",
+              fontWeight: 800,
+              fontSize: 13,
+              margin: 6,
             }}
           >
-            <View style={styles.item}>
-              <Image
-                source={item.thumbnail}
-                style={{
-                  width: "100%",
-                  height: "80%",
-                  borderTopLeftRadius: 16,
-                  borderTopRightRadius: 16,
-                }}
-              />
-              <LinearGradient
-                colors={[Colors.blue1, "aqua"]}
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 0 }}
-                style={{
-                  borderRadius: 10,
-                  borderTopLeftRadius: 0,
-                  borderTopRightRadius: 0,
-                  height: "20%",
-                  justifyContent: "space-between",
-                  width: "100%",
-                  flexDirection: "row",
-                }}
-              >
-                <View style={{ height: "20%" }}>
-                  <Texti>{item.course}</Texti>
-                  <Texti size={12}>{item.lessons} lessons </Texti>
-                </View>
-                <McTabIcon icon={Images.More} color="whitesmoke" size={20} />
-              </LinearGradient>
-            </View>
-          </TouchableOpacity>
-        )}
-      ></FlatList>
+            Overview
+          </Text>
+          <Batch
+            style={{
+              width: bord.over ? "15%" : 0,
+            }}
+          />
+        </Gam>
+        <Gam
+          style={{
+            borderBottomWidth: 2,
+            borderColor: bord.book ? "skyblue" : "white",
+          }}
+          onPress={() => {
+            veiwer(1);
+
+            border({
+              over: false,
+              book: true,
+              course: false,
+              advert: false,
+            });
+          }}
+        >
+          <Text
+            style={{
+              color: "#013246",
+              fontWeight: 800,
+              fontSize: 13,
+              margin: 6,
+            }}
+          >
+            Books
+          </Text>
+          <Batch>300</Batch>
+        </Gam>
+        <Gam
+          style={{
+            borderBottomWidth: 2,
+            borderColor: bord.course ? "skyblue" : "white",
+          }}
+          onPress={() => {
+            veiwer(2);
+
+            border({
+              over: false,
+              book: false,
+              course: true,
+              advert: false,
+            });
+          }}
+        >
+          <Text
+            style={{
+              color: "#013246",
+              fontWeight: 800,
+              fontSize: 13,
+              margin: 6,
+            }}
+          >
+            Courses
+          </Text>
+          <Batch>780</Batch>
+        </Gam>
+        <Gam
+          style={{
+            borderBottomWidth: 2,
+            borderColor: bord.advert ? "skyblue" : "white",
+          }}
+          onPress={() => {
+            veiwer(3);
+
+            border({
+              over: false,
+              book: false,
+              course: false,
+              advert: true,
+            });
+          }}
+        >
+          <Text
+            style={{
+              color: "#013246",
+              fontWeight: 800,
+              fontSize: 13,
+              margin: 6,
+            }}
+          >
+            Adverts
+          </Text>
+          <Batch>100</Batch>
+        </Gam>
+      </View>
     </View>
   );
 };
-
-const Container = styled.SafeAreaView`
-  flex: 1;
-  background: whitesmoke;
-`;
-
-const Header2Section = styled.View`
-  height: 18px;
-  margin: 16px 12px;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-`;
-
-const BannerSection = styled.TouchableOpacity`
-  width: 98%;
-  margin: auto;
-`;
-
-const Gam = styled.View`
-  background-color: #3490f3;
-  justify-content: space-around;
-  align-items: center;
-  height: 25%;
-  width: 30%;
-  padding-top: 17px;
-  padding-bottom: 17px;
-  margin: auto;
-  border-radius: 12px;
-  flex-direction: row;
-`;
 
 const Batch = styled.Text`
   background-color: lightskyblue;
   justify-content: center;
   align-items: center;
-  margin: 2px;
-  width: 50%;
-  padding: 4px;
+  width: 40%;
+  margin: 1px;
+  padding: 2px;
   font-weight: 800;
   color: floralwhite;
   text-align: center;
   border-radius: 30px;
 `;
 
-const Texti = styled.Text`
-  color: #fff;
-  font-size: ${({ size }) => size}px;
-  font-family: ${Fonts.type.medium};
-  margin: 0px 10px;
+const Container = styled.SafeAreaView`
+  flex: 1;
+  background: whitesmoke;
 `;
 
-const styles = StyleSheet.create({
-  posts: {
-    height: "48%",
-    width: "100%",
-    marginBottom: 10,
-    alignItems: "stretch",
-    justifyContent: "space-evenly",
-  },
-  course: {
-    width: "100%",
-    marginBottom: 10,
-    alignItems: "stretch",
-    justifyContent: "space-evenly",
-  },
-  item: {
-    marginRight: 16,
-    marginLeft: 5,
-    minHeight: 220,
-    margin: "auto",
-    minWidth: 180,
-    borderRadius: 16,
-    backgroundColor: "#736f84",
-    alignItems: "flex-start",
-    shadowColor: "black",
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowRadius: 8,
-    shadowOpacity: 0.7,
-    elevation: 12,
-  },
-});
+const Gam = styled.TouchableOpacity`
+  justify-content: space-around;
+  align-items: center;
+  height: 25%;
+  width: 24%;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  margin: auto;
+  flex-direction: row;
+`;
+const styles = StyleSheet.create({});
 export default Discover;

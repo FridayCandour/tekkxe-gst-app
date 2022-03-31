@@ -1,9 +1,8 @@
 import React from "react";
-import { Colors, Fonts } from "Constants";
+import { Colors } from "Constants";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
 const OptionsBox = ({ value, correct, ocheStrator, shape }) => {
-  console.log(value);
   function getColors(lenghtOfColors, anwser) {
     let colors = Array(lenghtOfColors).fill("transparent");
     if (typeof anwser === "number") {
@@ -140,7 +139,7 @@ const Choice = ({
       <Shape color={shape[choiceNumber]} size={16} />
       <View style={styles.optionTextView}>
         <Text style={styles.optionTextAlphabet}>{aphabet}</Text>
-        <Text style={[styles.optionTextValue]}>{value[choiceNumber]}</Text>
+        <Text style={styles.optionTextValue}>{value[choiceNumber]}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -191,16 +190,16 @@ const styles = StyleSheet.create({
   },
   optionTextAlphabet: {
     justifyContent: "space-around",
-    fontFamily: `${Fonts.type.bold}`,
     textWrap: "wrap",
     color: Colors.primary,
     marginRight: 5,
+    marginVertical: "auto",
   },
   optionTextValue: {
     color: "black",
     justifyContent: "space-around",
-    fontFamily: `${Fonts.type.primary}`,
     textWrap: "wrap",
+    padding: 8,
   },
 });
 

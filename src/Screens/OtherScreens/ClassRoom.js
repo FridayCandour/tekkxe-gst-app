@@ -1,134 +1,60 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components/native";
-import { McText, McImage, McTabIcon } from "Components";
+import { McTabIcon } from "Components";
 import { LinearGradient } from "expo-linear-gradient";
 import {
   View,
   ScrollView,
-  Animated,
   Text,
   FlatList,
   StyleSheet,
   Image,
+  Animated,
+  TouchableOpacity,
 } from "react-native";
-import { OptionsBox } from "Components";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { Colors, Fonts } from "Constants";
-import moment from "moment";
-// import { Courses } from "Mock";
 
 const ClassRoom = ({ navigation, route }) => {
   // get the selected courses from the route object
   const [item, setItem] = useState(null);
   useEffect(() => {
-    let { selectedArticle } = route.params;
-    setItem(selectedArticle);
+    let { page } = route.params;
+    setItem(page);
   }, []);
 
   return (
     <Container>
-      <ScrollView>
-        <QuizWrapper navigation={navigation} course={item} />
+      <ScrollView style={{ width: "100%", height: "100%" }}>
+        <Header navigation={navigation} course={item?.course} />
+        <CoursesContainer courses={item?.topics} navigation={navigation} />
       </ScrollView>
     </Container>
   );
 };
 
-const QuizWrapper = ({ navigation, course }) => {
+const Header = ({ navigation, course }) => {
   return (
-    <View
-      style={{
-        width: "100vw",
-        height: "100vh",
-        flexDirection: "column",
-      }}
-    >
-      <Header course={course?.course} />
-      <TwoBarNav />
-      <CoursesContainer
-        courses={course?.topics}
-        navigation={navigation}
-      ></CoursesContainer>
+    <View style={styles.bar}>
+      <Text
+        style={{
+          color: "#3490f3",
+          fontWeight: 700,
+          fontSize: 24,
+          margin: 15,
+        }}
+      >
+        {course}
+      </Text>
     </View>
   );
 };
-
-const Header = ({ course }) => {
-  return (
-    <View style={styles.Header}>
-      <View style={styles.topbar}>
-        <Text
-          style={{
-            color: "whitesmoke",
-            fontWeight: 700,
-            fontSize: 24,
-            margin: 10,
-          }}
-        >
-          Tekkxe English
-        </Text>
-        <McImage
-          style={{
-            width: 30,
-            height: 30,
-            margin: 10,
-          }}
-          source={require("/home/uiedbook/projects/dev/tekkxe-gst-app/assets/images/More.png")}
-        ></McImage>
-      </View>
-
-      <View style={styles.lowbar}>
-        <Text
-          style={{
-            color: "#3490f3",
-            fontWeight: 600,
-            fontSize: 20,
-            margin: 10,
-          }}
-        >
-          {course}
-        </Text>
-      </View>
-    </View>
-  );
-};
-
-const TwoBarNav = ({ no }) => {
-  return (
-    <View style={styles.TwoBarNav}>
-      <View style={styles.oneNav}>
-        <Text
-          style={{
-            color: "whitesmoke",
-            fontWeight: 700,
-            fontSize: 24,
-          }}
-        >
-          Sections
-        </Text>
-      </View>
-
-      <View style={styles.oneNav}>
-        <Text
-          style={{
-            color: "whitesmoke",
-            fontWeight: 700,
-            fontSize: 24,
-          }}
-        >
-          Books
-        </Text>
-      </View>
-    </View>
-  );
-};
-
-
-
 
 const CoursesContainer = ({ courses, navigation }) => {
   return (
-    <View style={styles.course}>
+    <View
+      style={{
+        width: "100%",
+      }}
+    >
       <FlatList
         keyExtractor={(item) => "_course" + item.name}
         vertical
@@ -137,29 +63,29 @@ const CoursesContainer = ({ courses, navigation }) => {
         renderItem={({ item, index }) => (
           <TouchableOpacity
             style={{
-              width: "50vh",
-              minHeight: 160,
+              width: "88%",
+              maxHeight: 140,
               margin: "auto",
-              padding: "2%",
+              padding: 5,
               borderRadius: 24,
               backgroundColor: "aqua",
-              marginTop: 30,
+              marginTop: 15,
             }}
             onPress={() => {
-              navigation.navigate("quizScreen", { selectedQuestions: item });
+              navigation.navigate("ArticleDetail", { selectedQuestions: item });
             }}
           >
             <LinearGradient
               colors={["#5770ec", "#14a8dd"]}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 0 }}
-              style={{ flex: 1, padding: "5%", borderRadius: 24 }}
+              style={{ padding: "5%", borderRadius: 24 }}
             >
               <Text
                 style={{
                   color: "whitesmoke",
-                  fontWeight: 200,
-                  fontSize: 16,
+                  fontWeight: 700,
+                  fontSize: 18,
                 }}
               >
                 {item.name}
@@ -181,61 +107,45 @@ const CoursesContainer = ({ courses, navigation }) => {
 
 const Container = styled.SafeAreaView`
   flex: 1;
-  background: #fff;
+`;
+const Gam = styled.TouchableOpacity`
+  justify-content: space-around;
+  align-items: center;
+  height: 40%;
+  width: 40%;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  margin: auto;
+  border-radius: 12px;
+  flex-direction: row;
+`;
+
+const Batch = styled.Text`
+  background-color: lightskyblue;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  width: 40%;
+  padding: 4px;
+  font-weight: 800;
+  color: floralwhite;
+  text-align: center;
+  border-radius: 30px;
+`;
+
+const Texti = styled.Text`
+  color: ${({ color }) => color};
+  font-size: ${({ size }) => size}px;
+  text-align: center;
 `;
 
 const styles = StyleSheet.create({
   topbar: {
-    height: "60%",
+    paddingTop: 5,
     width: "100%",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  lowbar: {
-    height: "40%",
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    backgroundColor: "whitesmoke",
-  },
-  Header: {
-    width: "100%",
-    height: "14%",
-    backgroundColor: "#3490f3",
+    maxHeight: 140,
+    backgroundColor: "#3490f3", //"#3490f3",
     flexDirection: "column",
-    justifyContent: "center",
-  },
-  TwoBarNav: {
-    width: "100%",
-    height: "6%",
-    backgroundColor: "#04bdf9",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-around",
-  },
-  oneNav: {
-    height: "100%",
-    width: "50%",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  course: {
-    width: "100%",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  btn: {
-    minWidth: 150,
-    maxHeight: 100,
-    padding: 12,
-    borderRadius: 12,
-    color: "black",
-    backgroundColor: "#cce5ff",
-    fontFamily: Fonts.type.bold,
-    margin: 16,
-    alignItems: "center",
     justifyContent: "center",
   },
   navigation: {
@@ -243,6 +153,23 @@ const styles = StyleSheet.create({
     alignContent: "center",
     justifyContent: "center",
     width: "100%",
+  },
+  bar: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    backgroundColor: "whitesmoke",
+  },
+  btn: {
+    minWidth: 150,
+    maxHeight: 100,
+    padding: 12,
+    borderRadius: 12,
+    color: "black",
+    backgroundColor: "#08b9fc",
+    margin: 16,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 

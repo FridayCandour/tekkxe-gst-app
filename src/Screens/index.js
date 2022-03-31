@@ -1,26 +1,22 @@
-import More from "./More";
-import Market from "./Market";
+import More from "./Profile";
+import Book from "./Book";
+import Advert from "./Advert";
+import Course from "./Course";
 import Explore from "./Explore";
 import Standings from "./Standings";
 import ClassRoom from "./OtherScreens/ClassRoom";
-import quizScreen from "./OtherScreens/quizScreen";
 import Registration from "./OtherScreens/Registration";
 import ArticleDetail from "./OtherScreens/ArticleDetail";
-import FirstPage from "./OtherScreens/FirstPage";
-import SecondPage from "./OtherScreens/SecondPage";
-import ThirdPage from "./OtherScreens/ThirdPage";
-import Browser from "./OtherScreens/Browser";
+import { Home } from "./OtherScreens/homeStack";
 export {
+  Home,
   More,
-  Market,
   Explore,
-  Browser,
-  ThirdPage,
   Standings,
-  FirstPage,
   ClassRoom,
-  SecondPage,
-  quizScreen,
   Registration,
   ArticleDetail,
+  Advert,
+  Course,
+  Book,
 };

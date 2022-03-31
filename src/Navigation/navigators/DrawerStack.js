@@ -1,18 +1,20 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { useTheme, lightTheme, darkTheme } from "Themes";
-import { Explore, Standings, More, Market } from "Screens";
+import { More, Advert, Course, Book, ArticleDetail } from "Screens";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import CustomSidebarMenu from "./CustomSidebarMenu";
-import TabStacks from "./TabStacks";
+import HomeStacks from "./homeStacks";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+
 const Drawer = createDrawerNavigator();
 export default function DrawerStack() {
   let theme = useTheme();
+
   return (
     <NavigationContainer theme={theme.mode === "dark" ? darkTheme : lightTheme}>
       <Drawer.Navigator
-        initialRouteName="home"
+        initialRouteName="Statistics"
         screenOptions={{
           drawerActiveBackgroundColor: "#3490f3",
           drawerActiveTintColor: "whitesmoke",
@@ -27,17 +29,31 @@ export default function DrawerStack() {
         }}
         drawerContent={(props) => <CustomSidebarMenu {...props} />}
       >
+        {/* <Drawer.Screen
+          name="ArticleDetail"
+          component={ArticleDetail}
+          options={{
+            headerShown: true,
+            title: "Business Unihub",
+            headerTitleStyle: {
+              borderBottomWidth: 2,
+              paddingHorizontal: 30,
+              borderColor: "grey",
+              borderRadius: 8,
+            },
+            headerTitleAlign: "center",
+          }}
+        /> */}
+
         <Drawer.Screen
-          name="home"
-          component={TabStacks}
+          name="Statistics"
+          component={HomeStacks}
           options={{
             headerShown: false,
-            title: "Home",
-            headerTitleAlign: "center",
             drawerIcon: ({ focused, color, size }) => (
               <Ionicons
                 color={focused ? "blue" : "#3490f3"}
-                name="home-outline"
+                name="business-outline"
                 size={22}
               />
             ),
@@ -45,11 +61,27 @@ export default function DrawerStack() {
         />
 
         <Drawer.Screen
-          name="Standings"
-          component={Standings}
+          name="advert"
+          component={Advert}
           options={{
             headerShown: false,
-            title: "courses",
+            title: "Adverts",
+            headerTitleAlign: "center",
+            drawerIcon: ({ focused, color, size }) => (
+              <Ionicons
+                color={focused ? "blue" : "#3490f3"}
+                name="cart-outline"
+                size={22}
+              />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="book"
+          component={Book}
+          options={{
+            headerShown: false,
+            title: "Books",
             headerTitleAlign: "center",
             drawerIcon: ({ focused, color, size }) => (
               <Ionicons
@@ -62,33 +94,32 @@ export default function DrawerStack() {
         />
 
         <Drawer.Screen
-          name="Market"
-          component={Market}
+          name="Courses"
+          component={Course}
           options={{
             headerShown: false,
-            title: "premiun",
+            title: "Courses",
             headerTitleAlign: "center",
             drawerIcon: ({ focused, color, size }) => (
               <Ionicons
                 color={focused ? "blue" : "#3490f3"}
-                name="cart-outline"
+                name="tv-outline"
                 size={22}
               />
             ),
           }}
         />
-
         <Drawer.Screen
-          name="More"
+          name="Porfile"
           component={More}
           options={{
             headerShown: false,
-            title: "progress",
+            title: "Profile",
             headerTitleAlign: "center",
             drawerIcon: ({ focused, color, size }) => (
               <Ionicons
                 color={focused ? "blue" : "#3490f3"}
-                name="timer-outline"
+                name="people"
                 size={22}
               />
             ),
