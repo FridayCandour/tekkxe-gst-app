@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components/native";
-<<<<<<< HEAD
-import { McTabIcon } from "Components";
-=======
 import { McImage, McTabIcon } from "Components";
->>>>>>> c64853ebfd482c13fcde21c6dc2b10d99d8ffa54
 import { LinearGradient } from "expo-linear-gradient";
 import {
   View,
@@ -13,10 +9,7 @@ import {
   FlatList,
   StyleSheet,
   Image,
-<<<<<<< HEAD
-=======
   ImageBackground,
->>>>>>> c64853ebfd482c13fcde21c6dc2b10d99d8ffa54
   Animated,
   TouchableOpacity,
 } from "react-native";
@@ -33,16 +26,12 @@ const ClassRoom = ({ navigation, route }) => {
   return view === 0 ? (
     <Container>
       <ScrollView style={{ width: "100%", height: "100%" }}>
-<<<<<<< HEAD
-        <Header navigation={navigation} course={item?.course} />
-=======
         <Header
           navigation={navigation}
           course={item?.course}
           view={view}
           setView={setView}
         />
->>>>>>> c64853ebfd482c13fcde21c6dc2b10d99d8ffa54
         <CoursesContainer courses={item?.topics} navigation={navigation} />
       </ScrollView>
     </Container>
@@ -62,26 +51,6 @@ const ClassRoom = ({ navigation, route }) => {
     </Container>
   );
 };
-<<<<<<< HEAD
-
-const Header = ({ navigation, course }) => {
-  return (
-    <View style={styles.bar}>
-      <Text
-        style={{
-          color: "#3490f3",
-          fontWeight: 700,
-          fontSize: 24,
-          margin: 15,
-        }}
-      >
-        {course}
-      </Text>
-    </View>
-  );
-};
-
-=======
 const ViewQuiz = ({ navigation, course, item }) => (
   <View
     style={{
@@ -279,7 +248,6 @@ const TwoBarNav = ({ view, setView }) => {
   );
 };
 
->>>>>>> c64853ebfd482c13fcde21c6dc2b10d99d8ffa54
 const CoursesContainer = ({ courses, navigation }) => {
   return (
     <View
@@ -341,10 +309,7 @@ const Container = styled.SafeAreaView`
   flex: 1;
 `;
 const Gam = styled.TouchableOpacity`
-<<<<<<< HEAD
-=======
   background-color: #3490f3;
->>>>>>> c64853ebfd482c13fcde21c6dc2b10d99d8ffa54
   justify-content: space-around;
   align-items: center;
   height: 40%;
@@ -380,11 +345,7 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     width: "100%",
     maxHeight: 140,
-<<<<<<< HEAD
-    backgroundColor: "#3490f3", //"#3490f3",
-=======
     backgroundColor: "blue", //"#3490f3",
->>>>>>> c64853ebfd482c13fcde21c6dc2b10d99d8ffa54
     flexDirection: "column",
     justifyContent: "center",
   },
@@ -394,11 +355,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
   },
-<<<<<<< HEAD
-  bar: {
-=======
   lowbar: {
->>>>>>> c64853ebfd482c13fcde21c6dc2b10d99d8ffa54
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-between",

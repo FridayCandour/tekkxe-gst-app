@@ -1,11 +1,7 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { useTheme, lightTheme, darkTheme } from "Themes";
-<<<<<<< HEAD
 import { More, Advert, Course, Book, ArticleDetail } from "Screens";
-=======
-import { Standings, More, Market, quizScreen } from "Screens";
->>>>>>> c64853ebfd482c13fcde21c6dc2b10d99d8ffa54
 import Ionicons from "react-native-vector-icons/Ionicons";
 import CustomSidebarMenu from "./CustomSidebarMenu";
 import HomeStacks from "./homeStacks";
@@ -54,11 +50,8 @@ export default function DrawerStack() {
           component={HomeStacks}
           options={{
             headerShown: false,
-<<<<<<< HEAD
-=======
             title: "Learn",
             headerTitleAlign: "center",
->>>>>>> c64853ebfd482c13fcde21c6dc2b10d99d8ffa54
             drawerIcon: ({ focused, color, size }) => (
               <Ionicons
                 color={focused ? "blue" : "#3490f3"}
@@ -70,7 +63,6 @@ export default function DrawerStack() {
         />
 
         <Drawer.Screen
-<<<<<<< HEAD
           name="advert"
           component={Advert}
           options={{
@@ -106,10 +98,6 @@ export default function DrawerStack() {
         <Drawer.Screen
           name="Courses"
           component={Course}
-=======
-          name="Market"
-          component={Market}
->>>>>>> c64853ebfd482c13fcde21c6dc2b10d99d8ffa54
           options={{
             headerShown: false,
             title: "Courses",
@@ -123,7 +111,6 @@ export default function DrawerStack() {
             ),
           }}
         />
-<<<<<<< HEAD
         <Drawer.Screen
           name="Porfile"
           component={More}
@@ -140,8 +127,6 @@ export default function DrawerStack() {
             ),
           }}
         />
-=======
->>>>>>> c64853ebfd482c13fcde21c6dc2b10d99d8ffa54
       </Drawer.Navigator>
     </NavigationContainer>
   );

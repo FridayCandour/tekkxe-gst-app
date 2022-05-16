@@ -3,7 +3,6 @@ import styled from "styled-components/native";
 import { View, ScrollView, FlatList, StyleSheet, Image } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import { Images } from "Constants";
-import uuid from "react-native-uuid";
 import { McTabIcon } from "../../Components";
 import axios from "axios";
 import cheerio from "react-native-cheerio";
@@ -37,18 +36,6 @@ const Standings = ({ navigation }) => {
   const [IsOnline, setIsOnline] = useState(true);
   useEffect(async () => {
     try {
-<<<<<<< HEAD
-      await axios
-        .get("https://Business Unihub.blogspot.com")
-        .then(async (html) => {
-          if (html.data) {
-            const data = await prepareData(html);
-            setContent(data);
-          } else {
-            setIsOnline(false);
-          }
-        });
-=======
       await axios.get("https://tekkxe.blogspot.com").then(async (html) => {
         if (html.data) {
           const data = await prepareData(html);
@@ -57,7 +44,6 @@ const Standings = ({ navigation }) => {
           setIsOnline(false);
         }
       });
->>>>>>> c64853ebfd482c13fcde21c6dc2b10d99d8ffa54
     } catch (error) {
       setContent([
         {
@@ -88,11 +74,7 @@ const Standings = ({ navigation }) => {
           setContent={setContent}
           prepareData={prepareData}
         />
-<<<<<<< HEAD
-        <CourseTitleBar size={16} course="Latest Business Unihub Posts" />
-=======
         <CourseTitleBar size={16} course="Latest Tekkxe English Posts" />
->>>>>>> c64853ebfd482c13fcde21c6dc2b10d99d8ffa54
         <PostContainer navigation={navigation} content={content} />
       </ScrollView>
     </Container>
@@ -103,11 +85,7 @@ const Standings = ({ navigation }) => {
         <Greetings name="Friday" />
         <Search />
         <Tags tags={tags} />
-<<<<<<< HEAD
-        <CourseTitleBar size={16} course="Latest Business Unihub Posts" />
-=======
         <CourseTitleBar size={16} course="Latest Tekkxe English Posts" />
->>>>>>> c64853ebfd482c13fcde21c6dc2b10d99d8ffa54
         {/* <PostContainer navigation={navigation} content={content} /> */}
       </ScrollView>
     </Container>
@@ -137,13 +115,7 @@ const Search = ({ setContent, setIsOnline, prepareData }) => {
           let text = e.nativeEvent.text.trim();
           try {
             await axios
-<<<<<<< HEAD
-              .get(
-                "https://Business Unihub.blogspot.com/search?q=" + text + "&m=1"
-              )
-=======
               .get("https://tekkxe.blogspot.com/search?q=" + text + "&m=1")
->>>>>>> c64853ebfd482c13fcde21c6dc2b10d99d8ffa54
               .then(async (html) => {
                 console.log(html);
                 if (html.data) {
@@ -238,11 +210,7 @@ const Header = ({ navigation }) => {
         height: "50%",
         alignItems: "center",
         flexDirection: "row",
-<<<<<<< HEAD
-        backgroundColor: "#3490f3",
-=======
         backgroundColor: "blue",
->>>>>>> c64853ebfd482c13fcde21c6dc2b10d99d8ffa54
         justifyContent: "space-between",
         borderBottomEndRadius: 10,
         borderBottomStartRadius: 10,
@@ -276,11 +244,7 @@ const Header = ({ navigation }) => {
             marginLeft: 16,
           }}
         >
-<<<<<<< HEAD
-          Business Unihub
-=======
           Tekkxe English
->>>>>>> c64853ebfd482c13fcde21c6dc2b10d99d8ffa54
         </Text>
       </View>
       <Image
@@ -319,13 +283,7 @@ const Tags = ({ tags, setIsOnline, setContent, prepareData }) => {
           let text = tags[0];
           try {
             await axios
-<<<<<<< HEAD
-              .get(
-                "https://Business Unihub.blogspot.com/search?q=" + text + "&m=1"
-              )
-=======
               .get("https://tekkxe.blogspot.com/search?q=" + text + "&m=1")
->>>>>>> c64853ebfd482c13fcde21c6dc2b10d99d8ffa54
               .then(async (html) => {
                 console.log(html);
                 if (html.data) {
@@ -362,13 +320,7 @@ const Tags = ({ tags, setIsOnline, setContent, prepareData }) => {
           let text = tags[1];
           try {
             await axios
-<<<<<<< HEAD
-              .get(
-                "https://Business Unihub.blogspot.com/search?q=" + text + "&m=1"
-              )
-=======
               .get("https://tekkxe.blogspot.com/search?q=" + text + "&m=1")
->>>>>>> c64853ebfd482c13fcde21c6dc2b10d99d8ffa54
               .then(async (html) => {
                 console.log(html);
                 if (html.data) {
@@ -405,13 +357,7 @@ const Tags = ({ tags, setIsOnline, setContent, prepareData }) => {
           let text = tags[2];
           try {
             await axios
-<<<<<<< HEAD
-              .get(
-                "https://Business Unihub.blogspot.com/search?q=" + text + "&m=1"
-              )
-=======
               .get("https://tekkxe.blogspot.com/search?q=" + text + "&m=1")
->>>>>>> c64853ebfd482c13fcde21c6dc2b10d99d8ffa54
               .then(async (html) => {
                 console.log(html);
                 if (html.data) {
@@ -448,13 +394,7 @@ const Tags = ({ tags, setIsOnline, setContent, prepareData }) => {
           let text = tags[3];
           try {
             await axios
-<<<<<<< HEAD
-              .get(
-                "https://Business Unihub.blogspot.com/search?q=" + text + "&m=1"
-              )
-=======
               .get("https://tekkxe.blogspot.com/search?q=" + text + "&m=1")
->>>>>>> c64853ebfd482c13fcde21c6dc2b10d99d8ffa54
               .then(async (html) => {
                 console.log(html);
                 if (html.data) {
@@ -491,13 +431,7 @@ const Tags = ({ tags, setIsOnline, setContent, prepareData }) => {
           let text = tags[4];
           try {
             await axios
-<<<<<<< HEAD
-              .get(
-                "https://Business Unihub.blogspot.com/search?q=" + text + "&m=1"
-              )
-=======
               .get("https://tekkxe.blogspot.com/search?q=" + text + "&m=1")
->>>>>>> c64853ebfd482c13fcde21c6dc2b10d99d8ffa54
               .then(async (html) => {
                 console.log(html);
                 if (html.data) {

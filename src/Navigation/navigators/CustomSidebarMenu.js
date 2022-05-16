@@ -51,11 +51,7 @@ const CustomSidebarMenu = (props) => {
               fontStyle: "roboto regular",
             }}
           >
-<<<<<<< HEAD
-            Balance : 89... billion Euro
-=======
             Average Quiz Score : 67% total
->>>>>>> c64853ebfd482c13fcde21c6dc2b10d99d8ffa54
           </Text>
         </ImageBackground>
         <DrawerItemList {...props} />

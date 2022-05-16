@@ -24,7 +24,7 @@ const BookBK = ({}) => {
         <HeaderButtonSection>
           <ShareCircle>
             <McImage
-              source={require("Assets/images/Share.png")}
+              // source={require("Assets/images/Share.png")}
               style={{
                 width: 37,
                 height: 37,

@@ -6,8 +6,6 @@ import CreateCourse from "./CreateCourses";
 import CreateAdvert from "./CreateAdvert";
 import Analysis from "./Analysis";
 import React, { useState, useEffect } from "react";
-<<<<<<< HEAD
-=======
 import { View, ScrollView } from "react-native";
 import styled from "styled-components/native";
 import { LinearGradient } from "expo-linear-gradient";
@@ -17,7 +15,6 @@ import { Images, Colors } from "Constants";
 import { McText, McImage } from "Components";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
->>>>>>> c64853ebfd482c13fcde21c6dc2b10d99d8ffa54
 const ArticleDetail = ({ navigation, route }) => {
   const [view, veiwer] = useState(1);
   useEffect(() => {
